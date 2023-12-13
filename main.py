@@ -278,3 +278,83 @@ class TeacherDashboard:
         form_tab_dropdown.pack(pady=10)
 
         tab_control.pack(expand=1, fill="both")
+
+    def notification_page(self):
+    # Add logic to change the language
+        pass
+
+    def update_info(self):
+        # Add logic to change the language
+        entry_frame = tk.Frame(self.root)
+        entry_frame.pack(pady=5)
+        # Update Name
+        tk.Label(entry_frame, text="Full name").grid(row=0, column=0, pady=5)
+        self.username_entry = tk.Entry(entry_frame)
+        self.username_entry.grid(row=0, column=1, pady=5, padx=5)
+        # Update Department
+        tk.Label(entry_frame, text="Department").grid(row=1, column=0, pady=5)
+        self.password_entry = tk.Entry(entry_frame)
+        self.password_entry.grid(row=1, column=1, pady=5, padx=5)
+
+        # Create Update button
+        login_button = tk.Button(self.root, text="UPDATE INFO", command=self.login)
+        login_button.pack(pady=20)
+
+        login_button.bind("<Button-1>", lambda e:
+        messagebox.showinfo("Success", "Information updated successfully!"))
+
+    def change_language(self):
+        # Add logic to change the language
+        lang_label = tk.Label(self.root, text="-- CHANGE LANGUAGE --")
+        lang_label.pack(pady=10)
+        english_button = tk.Button(self.root, text="ENGLISH", command=self.login)
+        english_button.pack(pady=20)
+        spanish_button = tk.Button(self.root, text="SPANISH", command=self.login)
+        spanish_button.pack(pady=20)
+        arabic_button = tk.Button(self.root, text="ARABIC", command=self.login)
+        arabic_button.pack(pady=20)
+        pass
+
+    def change_password(self):
+        # Add logic to change the password
+        # Entry fields frame
+        entry_frame = tk.Frame(self.root)
+        entry_frame.pack(pady=5)
+
+        # Create labels and entry widgets for old and new  passwords
+        tk.Label(entry_frame, text="Old Password").grid(row=0, column=0, pady=5)
+        self.username_entry = tk.Entry(entry_frame, show="*")
+        self.username_entry.grid(row=0, column=1, pady=5, padx=5)
+
+        tk.Label(entry_frame, text="New Password").grid(row=1, column=0, pady=5)
+        self.password_entry = tk.Entry(entry_frame, show="*")
+        self.password_entry.grid(row=1, column=1, pady=5, padx=5)
+
+        # Help link
+        help_link = tk.Label(self.root, text="Need help?", fg="blue", cursor="hand2")
+        help_link.pack()
+
+        # Create Change Password button
+        login_button = tk.Button(self.root, text="CHANGE PASSWORD", command=self.login)
+        login_button.pack(pady=20)
+
+        # Bind the help link
+        help_link.bind("<Button-1>", lambda e: messagebox.showinfo("Help", "Password Should include: Uppercase, Lowercase, Numbers, Special Characters"))
+
+        # Bind the Change password button
+        login_button.bind("<Button-1>", lambda e:
+        messagebox.showinfo("Success", "Password updated successfully!"))
+        pass
+
+    def enable_2fa(self):
+        # Add logic to enable 2-factor authentication
+        pass
+
+    def logout(self):
+        self.root.destroy()  # Close the student app window
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = LoginApp(root)
+    root.mainloop()
+# ///////////////////
