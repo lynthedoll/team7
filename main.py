@@ -69,84 +69,84 @@ class LoginApp:
         help_link.bind("<Button-1>", lambda e: messagebox.showinfo("Help", "Help instructions go here."))
         
     def login(self):
-            # Get the entered username and password
-            username = self.username_entry.get()
-            password = self.password_entry.get()
+        # Get the entered username and password
+        username = self.username_entry.get()
+        password = self.password_entry.get()
     
-            # Validate credentials (dummy data for demonstration purposes)
-            student = Student("student123", "password123")
-            teacher = Teacher("teacher456", "password456")
+        # Validate credentials (dummy data for demonstration purposes)
+        student = Student("student123", "password123")
+        teacher = Teacher("teacher456", "password456")
     
-            if username == student.username and password == student.password:
-                messagebox.showinfo("Success", "Student login successful!")
-                self.root.destroy()  # Close the login window
-                StudentApp(tk.Tk())  # Open the student app window
+        if username == student.username and password == student.password:
+            messagebox.showinfo("Success", "Student login successful!")
+            self.root.destroy()  # Close the login window
+            StudentApp(tk.Tk())  # Open the student app window
     
-            elif username == teacher.username and password == teacher.password:
-                messagebox.showinfo("Success", "Teacher login successful!")
-                self.root.destroy()  # Close the login window
-                TeacherDashboard(tk.Tk())  # Open the teacher app window
+        elif username == teacher.username and password == teacher.password:
+            messagebox.showinfo("Success", "Teacher login successful!")
+            self.root.destroy()  # Close the login window
+            TeacherDashboard(tk.Tk())  # Open the teacher app window
     
-            else:
-                messagebox.showerror("Error", "Invalid username or password")
+        else:
+            messagebox.showerror("Error", "Invalid username or password")
     
-    class StudentApp:
-        def __init__(self, root):
-            self.root = root
-            self.root.title("Bison Advisor - Student App")
+class StudentApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Bison Advisor - Student App")
     
-            # Load and resize the user icon
-            user_icon_image = Image.open("user icon.png").resize((32, 32), Image.LANCZOS)
-            self.user_icon_photo = ImageTk.PhotoImage(user_icon_image)
+        # Load and resize the user icon
+        user_icon_image = Image.open("user icon.png").resize((32, 32), Image.LANCZOS)
+        self.user_icon_photo = ImageTk.PhotoImage(user_icon_image)
     
-            # Create a label to display the user icon in the top-right corner
-            user_icon_label = tk.Label(root, image=self.user_icon_photo)
-            user_icon_label.pack(side=tk.TOP, anchor=tk.NE, padx=10, pady=10)
+        # Create a label to display the user icon in the top-right corner
+        user_icon_label = tk.Label(root, image=self.user_icon_photo)
+        user_icon_label.pack(side=tk.TOP, anchor=tk.NE, padx=10, pady=10)
     
-            # Create student-specific UI elements here
-            self.create_navigation_bar()
+        # Create student-specific UI elements here
+        self.create_navigation_bar()
     
-            # Create title at the top-middle-left of the page
-            title_label = tk.Label(self.root, text="Bison Advisor", font=("Helvetica", 24, "bold"))
-            title_label.place(relx=0.5, rely=0, anchor="n")
+        # Create title at the top-middle-left of the page
+        title_label = tk.Label(self.root, text="Bison Advisor", font=("Helvetica", 24, "bold"))
+        title_label.place(relx=0.5, rely=0, anchor="n")
     
-            # Create logout button in the top right corner
-            logout_button = tk.Button(root, text="Logout", command=self.logout)
-            logout_button.pack(side=tk.TOP, anchor=tk.NE, padx=10, pady=10)
+        # Create logout button in the top right corner
+        logout_button = tk.Button(root, text="Logout", command=self.logout)
+        logout_button.pack(side=tk.TOP, anchor=tk.NE, padx=10, pady=10)
     
-            # Load and resize the image
-            profile_image = Image.open("user icon.png").resize((100, 100), Image.LANCZOS)
-            self.profile_photo = ImageTk.PhotoImage(profile_image)
+        # Load and resize the image
+        profile_image = Image.open("user icon.png").resize((100, 100), Image.LANCZOS)
+        self.profile_photo = ImageTk.PhotoImage(profile_image)
     
-            canvas = tk.Canvas(root, width=100, height=100)
-            canvas.create_image(0, 0, anchor=tk.NE, image=self.profile_photo)
-            canvas.pack(side=tk.TOP, anchor=tk.NE, padx=10, pady=10)
+        canvas = tk.Canvas(root, width=100, height=100)
+        canvas.create_image(0, 0, anchor=tk.NE, image=self.profile_photo)
+        canvas.pack(side=tk.TOP, anchor=tk.NE, padx=10, pady=10)
     
-            # Create "Upcoming Events" table
-            events_label = tk.Label(root, text="Upcoming Events", font=("Helvetica", 12, "underline"))
-            events_label.place(relx=0.5, rely=0.2, anchor=tk.CENTER)  # Centered and raised higher
+         # Create "Upcoming Events" table
+        events_label = tk.Label(root, text="Upcoming Events", font=("Helvetica", 12, "underline"))
+        events_label.place(relx=0.5, rely=0.2, anchor=tk.CENTER)  # Centered and raised higher
     
-            # Fake data for events
-            events_data = [
-                {"event": "Event 1", "date": "2023-12-15"},
-                {"event": "Event 2", "date": "2023-12-20"},
-                {"event": "Event 3", "date": "2023-12-25"},
-                {"event": "Event 4", "date": "2023-12-30"},
+        # Fake data for events
+        events_data = [
+            {"event": "Event 1", "date": "2023-12-15"},
+            {"event": "Event 2", "date": "2023-12-20"},
+             {"event": "Event 3", "date": "2023-12-25"},
+            {"event": "Event 4", "date": "2023-12-30"},
             ]
     
-            # Create a table-like layout for events
-            table_frame = tk.Frame(root)
-            table_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centered
+        # Create a table-like layout for events
+        table_frame = tk.Frame(root)
+        table_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centered
     
-            for event in events_data:
-                event_frame = tk.Frame(table_frame, borderwidth=2, relief="solid")
-                event_frame.pack(side=tk.LEFT, padx=10, pady=10)
+        for event in events_data:
+            event_frame = tk.Frame(table_frame, borderwidth=2, relief="solid")
+            event_frame.pack(side=tk.LEFT, padx=10, pady=10)
     
-                event_name_label = tk.Label(event_frame, text=event["event"], font=("Helvetica", 9))
-                event_name_label.pack()
+            event_name_label = tk.Label(event_frame, text=event["event"], font=("Helvetica", 9))
+            event_name_label.pack()
     
-                event_date_label = tk.Label(event_frame, text=event["date"], font=("Helvetica", 9))
-                event_date_label.pack()
+            event_date_label = tk.Label(event_frame, text=event["date"], font=("Helvetica", 9))
+            event_date_label.pack()
     def create_bottom_navigation_bar(self):
         # Bottom navigation bar frame
         bottom_nav_frame = tk.Frame(self.root)
