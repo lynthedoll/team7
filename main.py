@@ -147,8 +147,71 @@ class LoginApp:
     
                 event_date_label = tk.Label(event_frame, text=event["date"], font=("Helvetica", 9))
                 event_date_label.pack()
-    
-            # ...
-    
-            # Add the new method to create the second navigation bar
-            self.create_bottom_navigation_bar()
+    def create_bottom_navigation_bar(self):
+        # Bottom navigation bar frame
+        bottom_nav_frame = tk.Frame(self.root)
+        bottom_nav_frame.pack(side=tk.RIGHT, anchor=tk.SE, fill=tk.Y, padx=10, pady=10)
+
+        # Add buttons for Courses, Students, Paid Courses, Duties, and Notifications
+        tk.Button(bottom_nav_frame, text="Courses", command=self.courses).pack(pady=5, anchor="e", fill=tk.X)
+        tk.Button(bottom_nav_frame, text="Students", command=self.students).pack(pady=5, anchor="e", fill=tk.X)
+        tk.Button(bottom_nav_frame, text="Paid Courses", command=self.paid_courses).pack(pady=5, anchor="e", fill=tk.X)
+        tk.Button(bottom_nav_frame, text="Duties", command=self.duties).pack(pady=5, anchor="e", fill=tk.X)
+        tk.Button(bottom_nav_frame, text="Notifications", command=self.notifications).pack(pady=5, anchor="e", fill=tk.X)
+
+    def create_navigation_bar(self):
+        # Navigation bar frame
+        nav_frame = tk.Frame(self.root)
+        nav_frame.pack(side=tk.LEFT, fill=tk.Y, padx=10)
+
+        # Add buttons for Home, Advisor, Resources, Student Services, Major Explorer, and Settings
+        tk.Button(nav_frame, text="Home", command=self.go_home).pack(pady=10, anchor="w", fill=tk.X)
+        tk.Button(nav_frame, text="Advisor", command=self.advisor).pack(pady=10, anchor="w", fill=tk.X)
+        tk.Button(nav_frame, text="Resources", command=self.resources).pack(pady=10, anchor="w", fill=tk.X)
+        tk.Button(nav_frame, text="Student Services", command=self.student_services).pack(pady=10, anchor="w", fill=tk.X)
+        tk.Button(nav_frame, text="Major Explorer", command=self.major_explorer).pack(pady=10, anchor="w", fill=tk.X)
+        tk.Button(nav_frame, text="Settings", command=self.settings).pack(pady=10, anchor="w", fill=tk.X)
+
+    def go_home(self):
+        # Add functionality for the Home button
+        messagebox.showinfo("Home", "Welcome to the Home page!")
+
+    def advisor(self):
+        # Add functionality for the Advisor button
+        messagebox.showinfo("Advisor", "Advisor page")
+
+    def resources(self):
+        # Add functionality for the Resources button
+        messagebox.showinfo("Resources", "Resources page")
+
+    def student_services(self):
+        # Add functionality for the Student Services button
+        messagebox.showinfo("Student Services", "Student Services page")
+
+    def major_explorer(self):
+        # Add functionality for the Major Explorer button
+        messagebox.showinfo("Major Explorer", "Major Explorer page")
+
+    def settings(self):
+        # Add functionality for the Settings button
+        messagebox.showinfo("Settings", "Settings page")
+
+    def logout(self):
+        self.root.destroy()  # Close the student app window
+        LoginApp(tk.Tk())   # Open the login window
+
+    def courses(self):
+        messagebox.showinfo("Courses", "Courses page")
+
+    def students(self):
+        messagebox.showinfo("Students", "Students page")
+
+    def paid_courses(self):
+        messagebox.showinfo("Paid Courses", "Paid Courses page")
+
+    def duties(self):
+        messagebox.showinfo("Duties", "Duties page")
+
+    def notifications(self):
+        messagebox.showinfo("Notifications", "Notifications page")
+
