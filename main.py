@@ -214,4 +214,67 @@ class LoginApp:
 
     def notifications(self):
         messagebox.showinfo("Notifications", "Notifications page")
+        
+class TeacherDashboard:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Welcome to your Teacher Dashboard!")
 
+        self.create_menu()
+        self.create_tabs()
+
+    def create_menu(self):
+        menu_bar = tk.Menu(self.root)
+
+        # Notifications menu
+        notification_menu = tk.Menu(menu_bar, tearoff=0)
+        notification_menu.add_command(label="Inbox", command=self.notification_page)
+        notification_menu.add_command(label="Notifications Page", command=self.notification_page)
+        menu_bar.add_cascade(label="Notifications", menu=notification_menu)
+
+        # Settings menu
+        settings_menu = tk.Menu(menu_bar, tearoff=0)
+        settings_menu.add_command(label="Update Information", command=self.update_info)
+        settings_menu.add_command(label="Change Language", command=self.change_language)
+        settings_menu.add_command(label="Change Password", command=self.change_password)
+        settings_menu.add_command(label="Enable 2FA", command=self.enable_2fa)
+        settings_menu.add_command(label="Logout", command=self.logout)
+        menu_bar.add_cascade(label="Settings", menu=settings_menu)
+
+        self.root.config(menu=menu_bar)
+
+    def create_tabs(self):
+        tab_control = ttk.Notebook(self.root)
+
+        # Home Tab
+        home_tab = ttk.Frame(tab_control)
+        tab_control.add(home_tab, text="Home")
+        # Add Home components here
+        home_tab_dropdown = tk.Label(home_tab, text="Upcoming Events:\n\n December 18, 2023 - January 1, 2024\n Winter Recess \n\n January 8, 2024\n -- First Day of Classes --\n\n January 15, 2024\n University Closed: MLK Day\n\n January 19, 2024\n -- Last Day to Register --")
+        home_tab_dropdown.pack(side="bottom",pady=10)
+        home_tab_dropdown = tk.Label(home_tab, text="Calendar")
+        home_tab_dropdown.pack(pady=10)
+        home_tab_dropdown = tk.Button(home_tab, text="Monthly View")
+        home_tab_dropdown.pack(pady=10)
+        home_tab_dropdown = tk.Button(home_tab, text="Weekly View")
+        home_tab_dropdown.pack(pady=10)
+        home_tab_dropdown = tk.Button(home_tab, text="Daily View")
+        home_tab_dropdown.pack(pady=10)
+
+        # Students Tab
+        advise_student_tab = ttk.Frame(tab_control)
+        tab_control.add(advise_student_tab, text="Students")
+        # Add your Student components here
+        student_tab_dropdown = tk.Button(advise_student_tab, text="Student Selection Page")
+        student_tab_dropdown.pack(pady=10)
+        student_tab_dropdown = tk.Button(advise_student_tab, text="Student Academic Profile")
+        student_tab_dropdown.pack(pady=10)
+
+        # Forms and Approvals Tab
+        forms_approvals_tab = ttk.Frame(tab_control)
+        tab_control.add(forms_approvals_tab, text="Forms and Approvals")
+        # Add your Forms and Approvals components here
+        form_tab_dropdown = tk.Button(forms_approvals_tab, text="PDF Selection Page")
+        form_tab_dropdown.pack(pady=10)
+
+        tab_control.pack(expand=1, fill="both")
